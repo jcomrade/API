@@ -14,8 +14,6 @@ function App() {
       const temp = await firstSet.json()
       const secondSet = await fetch(api2)
       const temp2 = await secondSet.json()
-      const final = [...temp.data, ...temp2.data]
-      console.log(final)
       setCount(final)
       setLoading(false)
     }())
@@ -35,7 +33,6 @@ function App() {
         {
           count
             ? count.map((items) => {
-              { console.log("a") }
               return <tr key={items.id} className='border border-1'>
                 <td>
                   <img src={`${items.avatar}`} />
