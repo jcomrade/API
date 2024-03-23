@@ -23,38 +23,46 @@ function App() {
   return (
     <div>
       <h1>List of Random People</h1>
-      {
-        count 
-        ? count.map((items) => {
-          { console.log("a") }
-          return <div key={items.id} className='flex p-2 border border-1'>
-            <div>
-              <img src={`${items.avatar}`} />
-            </div>  
-            <div className='p-2'>
-              <div className='border border-1'>
-                ID: {items.id}
+      <a href="https://github.com/jcomrade/API" target="_blank" className='bg-white font-bold text-black px-3 rounded-md'>GITHUB PROJECT LINK</a>
+      <table className='border border-1 mt-5'>
+        <tr className='border border-1'>
+          <th className='border border-1'>Profile</th>
+          <th className='border border-1'>ID Number</th>
+          <th className='border border-1'>First Name</th>
+          <th className='border border-1'>Last Name</th>
+          <th className='border border-1'>Email</th>
+        </tr>
+        {
+          count
+            ? count.map((items) => {
+              { console.log("a") }
+              return <tr key={items.id} className='border border-1'>
+                <td>
+                  <img src={`${items.avatar}`} />
+                </td>
+                <td className='border border-1'>
+                  {items.id}
+                </td>
+                <td className='border border-1'>
+                  {items.first_name}
+                </td>
+                <td className='border border-1'>
+                  {items.last_name}
+                </td>
+                <td className='border border-1'>
+                  {items.email}
+                </td>
+              </tr>
+            })
+            : isLoading
+              ? <div>
+                Loading...
               </div>
-              <div className='border border-1'>
-                First Name: {items.first_name}
+              : <div>
+                API Fetching error...
               </div>
-              <div className='border border-1'>
-                Last Name: {items.last_name}
-              </div>
-              <div className='border border-1'>
-                Email: {items.email}
-              </div>
-            </div>
-          </div>
-        })
-        : isLoading
-        ? <div>
-        Loading...
-        </div>
-        : <div>
-        API Fetching error...
-        </div>
-      }
+        }
+      </table>
     </div>
   )
 }
