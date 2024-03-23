@@ -14,6 +14,7 @@ function App() {
       const temp = await firstSet.json()
       const secondSet = await fetch(api2)
       const temp2 = await secondSet.json()
+      const final = [...temp.data, ...temp2.data]
       setCount(final)
       setLoading(false)
     }())
